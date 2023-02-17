@@ -202,13 +202,14 @@ def insert(root: Node, value: int) -> typing.Tuple[bool, typing.Optional[Node]]:
 
     if not root:
         return Node(value, None, None)
+
+    if value == root.info:
+        return root
+    elif value > root.info:
+        root.right = insert(root.right, value)
     else:
-        if root.info == value:
-            return root
-        elif root.info < value:
-            root.right = insert(root.right, value)
-        else:
-            root.left = insert(root.left, value)
+        root.left = insert(root.left, value)
+
     return root
 
 
@@ -226,6 +227,17 @@ def remove(root: Node, value: int) -> typing.Tuple[bool, typing.Optional[Node]]:
       - the root node of the new tree
     """
 
-    # TODO: Implement this function
+    if not root:
+        # value was not found in this subtree
+        return False, root
+    
+    success = True
+    if value > root.info:
+        success, root.right = remove(root.right, value)
+    elif value < root.info:
+        success, root.left = remove(root.left, value)
+    else:
+        # Root has value, so remove root
+        return True, None
 
-    raise NotImplementedError()
+    return success, root
