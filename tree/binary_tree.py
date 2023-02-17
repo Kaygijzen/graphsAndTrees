@@ -189,6 +189,29 @@ def add(root: Node, value: int) -> bool:
     return True
 
 
+def insert(root: Node, value: int) -> typing.Tuple[bool, typing.Optional[Node]]:
+    """
+    THIS ACTUALLY INSERTS
+
+    :param root: the root of the (sub)tree
+    :param value: the value to be added
+    :return: the new binary search tree, with the new node
+    """
+    
+    # TODO: write test for this
+
+    if not root:
+        return Node(value, None, None)
+    else:
+        if root.info == value:
+            return root
+        elif root.info < value:
+            root.right = insert(root.right, value)
+        else:
+            root.left = insert(root.left, value)
+    return root
+
+
 def remove(root: Node, value: int) -> typing.Tuple[bool, typing.Optional[Node]]:
     """
     Removes a node from the binary search tree, respecting the condition that
