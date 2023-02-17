@@ -34,8 +34,8 @@ def get_height(root: Node) -> int:
     :param root: The root of the (sub)tree
     :return: the height of the (sub)tree
     """
-    # FIXME:
-    if not root:
+    
+    if not root or (not root.left and not root.right):
         return 0
     
     height_left = get_height(root.left)
@@ -226,6 +226,8 @@ def remove(root: Node, value: int) -> typing.Tuple[bool, typing.Optional[Node]]:
       - a boolean of whether the value was found and has been deleted
       - the root node of the new tree
     """
+
+    # TODO: check TestTreeFunctions.test_delete_manual
 
     if not root:
         # value was not found in this subtree
