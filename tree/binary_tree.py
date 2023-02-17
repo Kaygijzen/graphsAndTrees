@@ -191,7 +191,8 @@ def add(root: Node, value: int) -> bool:
 
 def insert(root: Node, value: int) -> typing.Tuple[bool, typing.Optional[Node]]:
     """
-    THIS ACTUALLY INSERTS
+    NOTE: Heb deze zelf toegevoegd
+    This actually inserts value in the binary search tree.
 
     :param root: the root of the (sub)tree
     :param value: the value to be added
@@ -227,7 +228,7 @@ def remove(root: Node, value: int) -> typing.Tuple[bool, typing.Optional[Node]]:
       - the root node of the new tree
     """
 
-    # TODO: check TestTreeFunctions.test_delete_manual
+    # TODO: check TestTreeFunctions.test_delete_manual, die faalt nog
 
     if not root:
         # value was not found in this subtree
